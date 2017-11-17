@@ -1,3 +1,5 @@
+package abc.cart;
+
 import io.dropwizard.Configuration;
 
 public class ShoppingCartConfiguration extends Configuration {

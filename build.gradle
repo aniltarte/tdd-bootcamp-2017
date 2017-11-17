@@ -18,5 +18,7 @@ repositories {
 
 dependencies {
     compile group: 'io.dropwizard', name: 'dropwizard-core', version: dropwizardVersion
+
+    testCompile group: 'io.dropwizard', name: 'dropwizard-testing', version: dropwizardVersion
     testCompile 'junit:junit:4.12'
 }
