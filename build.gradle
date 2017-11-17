@@ -1,0 +1,22 @@
+apply plugin: 'application'
+
+sourceCompatibility = 1.8
+
+project.ext {
+    dropwizardVersion = '1.2.0'
+}
+
+mainClassName = "Main"
+
+run {
+    args 'server', 'src/main/resources/app-config.yml'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'io.dropwizard', name: 'dropwizard-core', version: dropwizardVersion
+    testCompile 'junit:junit:4.12'
+}
