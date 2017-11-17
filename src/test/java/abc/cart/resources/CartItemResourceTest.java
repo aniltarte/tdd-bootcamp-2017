@@ -9,6 +9,7 @@ import org.glassfish.jersey.client.JerseyClientBuilder;
 import org.junit.Assert;
 import org.junit.ClassRule;
 import org.junit.Test;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.MediaType;
@@ -23,7 +24,6 @@ public class CartItemResourceTest {
 
     @Test
     public void itShouldAddCartItemToACart() {
-
         CartItemRequest cartItemRequest = new CartItemRequest("dove soap", 1);
 
         Response response = jerseyClient.target(getBaseUrl() + "/cart/user/item").request()
