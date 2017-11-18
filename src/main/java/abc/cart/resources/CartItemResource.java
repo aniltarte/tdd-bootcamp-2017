@@ -24,4 +24,11 @@ public class CartItemResource {
 
         return Response.ok().build();
     }
+
+    @DELETE
+    @Path("{cartItemName}")
+    public Response addCartItem(@PathParam("cartItemName") String cartItemName) {
+        cartRepository.delete(cartItemName);
+        return Response.ok().build();
+    }
 }
