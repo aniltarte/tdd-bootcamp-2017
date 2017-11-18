@@ -1,5 +1,6 @@
 package abc.cart;
 
+import abc.cart.repository.CartRepository;
 import abc.cart.resources.CartItemResource;
 import abc.cart.resources.CartResource;
 import io.dropwizard.Application;
@@ -16,8 +17,9 @@ public class Main extends Application<ShoppingCartConfiguration> {
 
     @Override
     public void run(ShoppingCartConfiguration configuration, Environment environment) throws Exception {
-        environment.jersey().register(CartResource.class);
-        environment.jersey().register(CartItemResource.class);
+        CartRepository cartRepository = new CartRepository();
+        environment.jersey().register(new CartResource(cartRepository));
+        environment.jersey().register(new CartItemResource(cartRepository));
 
         logger.info(configuration.getAppName() + " application started ...");
     }

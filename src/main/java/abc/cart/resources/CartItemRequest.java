@@ -1,5 +1,7 @@
 package abc.cart.resources;
 
+import abc.cart.domain.CartItem;
+
 public class CartItemRequest {
     private String productId;
     private int quantities;
@@ -12,6 +14,10 @@ public class CartItemRequest {
 
         this.productId = productId;
         this.quantities = quantities;
+    }
+
+    public CartItem toCartItem() {
+        return new CartItem(productId, quantities);
     }
 
     public String getProductId() {
