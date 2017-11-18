@@ -8,10 +8,8 @@ import io.dropwizard.testing.ResourceHelpers;
 import io.dropwizard.testing.junit.DropwizardAppRule;
 import org.glassfish.jersey.client.JerseyClient;
 import org.glassfish.jersey.client.JerseyClientBuilder;
-import org.junit.Assert;
 import org.junit.ClassRule;
 import org.junit.Test;
-import org.mockito.runners.MockitoJUnitRunner;
 
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.GenericType;
@@ -32,15 +30,15 @@ public class AddCartItemAcceptanceTest {
     public void itShouldAddCartItemToACart() {
         CartItemRequest cartItemRequest = new CartItemRequest("dove soap", 1);
 
-        Response response = jerseyClient.target(getBaseUrl() + "/cart/user/item").request()
+        Response response = jerseyClient.target(getBaseUrl() + "/cart/anilt/item").request()
                 .post(Entity.entity(cartItemRequest, MediaType.APPLICATION_JSON_TYPE));
 
         assertEquals(200, response.getStatus());
 
-        List<CartItem> addedCartItems = jerseyClient.target(getBaseUrl() + "/cart/user").request().get(toCartItemList());
+        List<CartItem> addedCartItems = jerseyClient.target(getBaseUrl() + "/cart/anilt").request().get(toCartItemList());
 
         assertEquals(1, addedCartItems.size());
-        assertEquals("dove soap", addedCartItems.get(0).getName());
+        assertEquals("dove soap", addedCartItems.get(0).getCartItemName());
     }
 
     private GenericType<List<CartItem>> toCartItemList() {
